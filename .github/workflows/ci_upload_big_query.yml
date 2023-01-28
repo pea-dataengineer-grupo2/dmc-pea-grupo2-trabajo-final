@@ -35,4 +35,4 @@ jobs:
         run: python src/uploadingtobigquery.py
 
       - name: execute upload files to workload stage
-        run: python uploadtoworkloadlayer.py
+        run: python src/uploadtoworkloadlayer.py

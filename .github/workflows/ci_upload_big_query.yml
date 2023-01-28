@@ -1,0 +1,21 @@
+name: CI Run Upload To Big Query
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: GCloud account setup
+        uses: google-github-actions/setup-gcloud@v0.2.1
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_GH_ACTIONS_SA_KEY }}
+          export_default_credentials: true

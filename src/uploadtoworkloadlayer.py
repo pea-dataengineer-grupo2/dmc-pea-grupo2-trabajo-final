@@ -29,10 +29,26 @@ def copy_blob(
         )
     )
 
-def list_files():
-    client = storage.Client()
-    for blob in client.list_blobs('dmc-pea-de-grupo-2-input', prefix='MunicipalidadJesusMaria'):
-        print(str(blob))
+def main():
+    files = []
 
-copy_blob("dmc-pea-de-grupo-2-input", "MunicipalidadJesusMaria/MuniJesusMaria2021_2.csv",
-"dmc-pea-de-grupo-2-datalake", "workload/MunicipalidadJesusMaria/MuniJesusMaria2021_2.csv")
+    src_bucket = "dmc-pea-de-grupo-2-input"
+    dst_bucket = "dmc-pea-de-grupo-2-datalake"
+
+
+    file_jesus_maria_2021_2 = "MunicipalidadJesusMaria/MuniJesusMaria2021_2.csv"
+    file_jesus_maria_2022_1 = "MunicipalidadJesusMaria/MuniJesusMaria2022_1.csv"
+    file_los_olivos = "MunicipalidadLosOlivos/MuniLosOlivos2019-2022.csv"
+    file_lince = "MunicipalidadLince/MuniLince2022.csv"
+    file_san_bartolo = "MunicipalidadSanBartolo/MuniSanBartolo2021.csv"
+
+    files.append(file_jesus_maria_2021_2)
+    files.append(file_jesus_maria_2022_1)
+    files.append(file_los_olivos)
+    files.append(file_lince)
+    files.append(file_san_bartolo)
+
+    for file in files:
+        copy_blob(src_bucket, file, dst_bucket, "workload/" + file)
+
+main()

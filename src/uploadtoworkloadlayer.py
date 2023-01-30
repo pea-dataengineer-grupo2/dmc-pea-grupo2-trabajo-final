@@ -34,15 +34,4 @@ def list_files():
     for blob in client.list_blobs('dmc-pea-de-grupo-2-input', prefix='MunicipalidadJesusMaria'):
         print(str(blob))
 
-def copy_blob_2(source, dest):
-    source = "dmc-pea-de-grupo-2-input/MunicipalidadJesusMaria/MuniJesusMaria2021_2.csv"
-    dest =  "dmc-pea-de-grupo-2-datalake/workload/MunicipalidadJesusMaria/MuniJesusMaria2021_2.csv"
-
-
-
-    exe = "gsutil cp -r gs://" + source  + " gs://" + dest
-    print(exe)
-    !exe
-
 list_files()
-#copy_blob_2("","")

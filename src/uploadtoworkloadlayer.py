@@ -34,4 +34,5 @@ def list_files():
     for blob in client.list_blobs('dmc-pea-de-grupo-2-input', prefix='MunicipalidadJesusMaria'):
         print(str(blob))
 
-list_files()
+copy_blob("dmc-pea-de-grupo-2-input", "MunicipalidadJesusMaria/MuniJesusMaria2021_2.csv",
+"dmc-pea-de-grupo-2-datalake", "workload/MunicipalidadJesusMaria/MuniJesusMaria2021_2.csv")
